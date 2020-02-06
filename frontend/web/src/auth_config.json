@@ -2,5 +2,5 @@
     "domain": "leonardocavalcanti.auth0.com",
     "clientId": "GEVBsEVw3p77ke1XOQurD8heFuBeptth",
     "audience": "https://helpdesk.com",
-    "issuer": "https://leonardocavalcanti.auth0.com/"
+    "issuer": "leonardocavalcanti.auth0.com"
 }

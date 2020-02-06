@@ -2,7 +2,7 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as mongoose from 'mongoose';
 import Controller from './interfaces/controller.interface';
-import paginate = require('express-paginate');
+import * as paginate from 'express-paginate';
 
 class App {
     public app: express.Application;

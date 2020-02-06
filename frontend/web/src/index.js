@@ -23,8 +23,11 @@ ReactDOM.render(
     <Auth0Provider
         domain={config.domain}
         client_id={config.clientId}
+        audience={config.audience}
+        issuer={config.issuer}
         redirect_uri={window.location.origin}
         onRedirectCallback={onRedirectCallback}
+        scope={"openid profile read:tickets"}
     >
         <StoreProvider rootReducer={rootReducer} rootActions={rootActions}>
             <App />

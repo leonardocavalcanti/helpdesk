@@ -22,4 +22,4 @@ export const checkJwt = jwt({
     algorithms: ['RS256']
 });
 
-export const checkScopes = (scope: string) => jwtAuthz([scope]);
+export const checkScopes = () => jwtAuthz(["read:tickets"]);

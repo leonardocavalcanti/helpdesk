@@ -4,6 +4,9 @@ import Controller from '../interfaces/controller.interface';
 import ticketModel from './tickets.model';
 import * as paginate from 'express-paginate';
 import * as authMiddleware from '../middleware/auth.middleware';
+import * as jwtAuthz from 'express-jwt-authz';
+
+const checkScopes = jwtAuthz([ 'read:tickets' ]);
 
 class TicketsController implements Controller {
     public path = '/tickets';
@@ -14,8 +17,8 @@ class TicketsController implements Controller {
     }
 
     public intializeRoutes() {
-        this.router.get(this.path, authMiddleware.checkJwt, authMiddleware.checkScopes("read:tickets"), this.list);
-        this.router.post(this.path, authMiddleware.checkJwt, authMiddleware.checkScopes("write:tickets"), this.create);
+        this.router.get(this.path, authMiddleware.checkJwt, checkScopes, this.list);
+        this.router.post(this.path, authMiddleware.checkJwt, authMiddleware.checkScopes, this.create);
     }
 
     list = async (req: express.Request, res: express.Response, next: express.NextFunction) => {

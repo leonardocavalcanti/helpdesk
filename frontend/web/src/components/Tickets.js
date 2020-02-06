@@ -17,7 +17,7 @@ const Tickets = () => {
             const token = await getTokenSilently();
 
             ticketsService.list(token).then(r => {
-                ticketsActions.set(r.data);
+                ticketsActions.set(r.data.content);
 
                 setLoading(false);
             });
