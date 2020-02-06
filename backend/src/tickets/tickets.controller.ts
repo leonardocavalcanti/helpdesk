@@ -1,24 +1,21 @@
 import * as express from 'express';
+import * as paginate from 'express-paginate';
+import * as Keycloak from 'keycloak-connect';
+
 import Ticket from './ticket.interface';
 import Controller from '../interfaces/controller.interface';
 import ticketModel from './tickets.model';
-import * as paginate from 'express-paginate';
-import * as authMiddleware from '../middleware/auth.middleware';
-import * as jwtAuthz from 'express-jwt-authz';
-
-const checkScopes = jwtAuthz([ 'read:tickets' ]);
 
 class TicketsController implements Controller {
     public path = '/tickets';
     public router = express.Router();
 
     constructor() {
-        this.intializeRoutes();
     }
 
-    public intializeRoutes() {
-        this.router.get(this.path, authMiddleware.checkJwt, checkScopes, this.list);
-        this.router.post(this.path, authMiddleware.checkJwt, authMiddleware.checkScopes, this.create);
+    public intializeRoutes(keycloak: Keycloak) {
+        this.router.get(this.path, keycloak.protect(), this.list);
+        this.router.post(this.path, this.create);
     }
 
     list = async (req: express.Request, res: express.Response, next: express.NextFunction) => {

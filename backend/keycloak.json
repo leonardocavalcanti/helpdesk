@@ -1,0 +1,8 @@
+{
+    "realm": "helpdesk",
+    "auth-server-url": "http://localhost:8080/auth",
+    "ssl-required": "external",
+    "resource": "cxi-gestao-propostas-client-id",
+    "public-client": true,
+    "client_id": "cxi-gestao-propostas-client-id"
+}
