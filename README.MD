@@ -1,0 +1,1 @@
+`docker-compose up` on the root to start mongodb and keycloak

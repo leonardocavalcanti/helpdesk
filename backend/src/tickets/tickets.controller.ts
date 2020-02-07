@@ -1,20 +1,21 @@
 import * as express from 'express';
 import * as paginate from 'express-paginate';
-import * as Keycloak from 'keycloak-connect';
 
 import Ticket from './ticket.interface';
 import Controller from '../interfaces/controller.interface';
 import ticketModel from './tickets.model';
+import { keycloak } from '../middleware/auth.middleware';
 
 class TicketsController implements Controller {
     public path = '/tickets';
     public router = express.Router();
 
     constructor() {
+        this.intializeRoutes();
     }
 
-    public intializeRoutes(keycloak: Keycloak) {
-        this.router.get(this.path, keycloak.protect(), this.list);
+    public intializeRoutes() {
+        this.router.get(this.path, keycloak.protect("read-tickets"), this.list);
         this.router.post(this.path, this.create);
     }
 

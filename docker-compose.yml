@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  helpdesk-keycloak:
+    container_name: helpdesk-keycloak
+    image: jboss/keycloak
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=password
+      - KEYCLOAK_IMPORT=/tmp/realm.json
+    volumes:
+    - ./sso/realm.json:/tmp/realm.json
+    ports:
+      - 8080:8080
+      
+  helpdesk-mongodb:
+    container_name: helpdesk-mongodb
+    build: ./mongodb
+    environment:
+      - MONGODB_PASSWORD=password
+    ports:
+      - 27017:27017

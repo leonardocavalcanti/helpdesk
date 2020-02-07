@@ -5,7 +5,7 @@ export function initializer(keycloak: KeycloakService): () => Promise<any> {
         config: {
             realm: "helpdesk",
             url: "http://localhost:8080/auth",
-            clientId: "helpdesk-web"
+            clientId: "helpdesk"
         },
         initOptions: {
           onLoad: 'login-required',

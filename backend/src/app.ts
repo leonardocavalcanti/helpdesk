@@ -2,16 +2,13 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as mongoose from 'mongoose';
 import * as paginate from 'express-paginate';
-import * as Keycloak from 'keycloak-connect';
-import * as session from 'express-session';
 import * as cors from 'cors';
 import Controller from './interfaces/controller.interface';
 import TicketsController from './tickets/tickets.controller';
+import { session, keycloak } from './middleware/auth.middleware';
 
 class App {
     public app: express.Application;
-
-    public keycloak: Keycloak;
 
     constructor() {
         this.app = express();
@@ -30,19 +27,8 @@ class App {
         this.app.use(bodyParser.json());
         this.app.use(paginate.middleware(10, 50));
         this.app.use(cors());
-
-        let memoryStore = new session.MemoryStore();
-
-        this.keycloak = new Keycloak({ store: memoryStore });
-
-        this.app.use(session({
-            secret: 'secret',
-            resave: false,
-            saveUninitialized: true,
-            store: memoryStore
-        }));
-
-        this.app.use(this.keycloak.middleware({ logout: "/" }));
+        this.app.use(session);
+        this.app.use(keycloak.middleware({ logout: "/" }));
 
         this.initializeControllers(
             [
@@ -53,8 +39,6 @@ class App {
 
     private initializeControllers(controllers: Controller[]) {
         controllers.forEach((controller) => {
-            controller.intializeRoutes(this.keycloak);
-
             this.app.use('/api/', controller.router);
         });
     }
