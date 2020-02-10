@@ -1,16 +1,28 @@
 {
+    "compileOnSave": false,
     "compilerOptions": {
+        "outDir": "dist",
+        "baseUrl": "/",
         "sourceMap": true,
-        "target": "es2017",
-        "outDir": "./dist",
-        "baseUrl": "./src",
-        "alwaysStrict": true,
-        "noImplicitAny": true,
+        "declaration": false,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "emitDecoratorMetadata": true
+        "allowSyntheticDefaultImports": true,
+        "target": "es2015",
+        "typeRoots": [
+            "node_modules/@types"
+        ],
+        "lib": [
+            "es2016",
+            "esnext.asynciterable",
+            "dom"
+        ]
     },
     "include": [
-        "src/**/*.ts"
+        "src/**/*.ts",
+        "src/*.ts"
     ],
     "exclude": [
         "node_modules"

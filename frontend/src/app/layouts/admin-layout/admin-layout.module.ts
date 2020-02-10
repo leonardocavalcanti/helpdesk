@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import { DashboardComponent } from '../../dashboard/dashboard.component';
-import { Tickets } from '../../tickets/tickets.component';
+import { TicketsComponent } from '../../tickets/tickets.component';
 
 import {
   MatButtonModule,
@@ -12,8 +12,14 @@ import {
   MatRippleModule,
   MatFormFieldModule,
   MatTooltipModule,
-  MatSelectModule
+  MatSelectModule,
+  MatIconModule,
+  MatTableModule,
+  MatSortModule,
+  MatPaginatorModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
+import { TicketsService } from '../../tickets/tickets.service';
 // import { AppAuthGuard } from '../../app.authguard';
 @NgModule({
   imports: [
@@ -27,13 +33,18 @@ import {
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    MatIconModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatProgressSpinnerModule
   ],
   declarations: [
     DashboardComponent,
-    Tickets,
+    TicketsComponent,
   ],
   providers: [
-    // AppAuthGuard
+    TicketsService
   ]
 })
 

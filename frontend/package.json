@@ -31,6 +31,7 @@
     "@angular/platform-server": "8.0.0",
     "@angular/router": "8.0.0",
     "ajv": "6.10.0",
+    "apollo-angular": "^1.8.0",
     "arrive": "2.4.1",
     "bootstrap": "4.3.1",
     "bootstrap-material-design": "4.1.2",
@@ -50,7 +51,13 @@
     "rxjs": "6.5.2",
     "rxjs-compat": "6.5.2",
     "web-animations-js": "2.3.1",
-    "zone.js": "0.9.1"
+    "zone.js": "0.9.1",
+    "apollo-angular-link-http": "^1.9.0",
+    "apollo-link": "^1.2.11",
+    "apollo-client": "^2.6.0",
+    "apollo-cache-inmemory": "^1.6.0",
+    "graphql-tag": "^2.10.0",
+    "graphql": "^14.5.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.803.25",

@@ -17,6 +17,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { initializer } from './utils/app-init';
 import { HttpClientModule } from '@angular/common/http';
+import { GraphQLModule } from './graphql.module';
 
 @NgModule({
   imports: [
@@ -29,9 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     RouterModule,
     AppRoutingModule,
     KeycloakAngularModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
-    })
+    GraphQLModule
   ],
   declarations: [
     AppComponent,
