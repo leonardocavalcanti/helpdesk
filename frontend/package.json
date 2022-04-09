@@ -45,7 +45,7 @@
     "jquery": "3.4.1",
     "keycloak-angular": "^7.1.0",
     "keycloak-js": "^8.0.2",
-    "moment": "2.24.0",
+    "moment": "2.29.2",
     "perfect-scrollbar": "1.1.0",
     "popper.js": "1.15.0",
     "rxjs": "6.5.2",
